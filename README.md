@@ -43,38 +43,57 @@ The format tier is determined before analysis begins. Every dimension note decla
 - Discuss structural, character, or dialogue problems
 
 
-English
-Overview
+好的，中英双语的更新文档如下，你可以直接发布在 GitHub Release / SkillHub：
+
+---
+
+
+## English
+
+### Overview
+
 McKee Story Analyzer v2 is a major upgrade. It retains the original 5-dimension diagnostic framework (Story Structure, Character Design, Dialogue & Text, Genre & Form, Scene Design) and the format-adaptation system, while introducing three core new capabilities.
 
-What's New
-1. Three Analytical Tones
+### What's New
+
+#### 1. Three Analytical Tones
+
 Users select their preferred tone before analysis begins. The entire output adjusts accordingly:
 
-Mode	Description	Best For
-Sharp	Direct, blunt, skips the "praise-first" convention	Experienced writers who want fast, actionable criticism
-Objective	Balanced, professional, theory-backed diagnoses	Writers seeking comprehensive, even-handed evaluation [Default]
-Encouraging	Gentle, constructive, positive-first framing (≥2:1 ratio)	Beginners or writers needing confidence support
+| Mode | Description | Best For |
+|------|-------------|----------|
+| **Sharp** | Direct, blunt, skips the "praise-first" convention | Experienced writers who want fast, actionable criticism |
+| **Objective** | Balanced, professional, theory-backed diagnoses | Writers seeking comprehensive, even-handed evaluation **[Default]** |
+| **Encouraging** | Gentle, constructive, positive-first framing (≥2:1 ratio) | Beginners or writers needing confidence support |
+
 A selection interface appears at the start of each session with brief descriptions of each mode.
 
-2. RAG Knowledge Base System
-1,828 structured knowledge entries automatically extracted from McKee's trilogy (STORY, DIALOGUE, CHARACTER) EPUB, tagged across 24 concept dimensions (Inciting Incident, The Gap, Character Arc, Subtext, Value Change, etc.).
+#### 2. RAG Knowledge Base System
 
-During analysis, Claude retrieves original McKee quotations via keyword search to ensure every diagnosis is grounded in precise theory. A companion query_mckee_kb.ps1 script provides RAG-style querying.
+**1,828 structured knowledge entries** automatically extracted from McKee's trilogy (STORY, DIALOGUE, CHARACTER) EPUB, tagged across **24 concept dimensions** (Inciting Incident, The Gap, Character Arc, Subtext, Value Change, etc.).
 
-3. Two Modes: Critique Only + Co-Creation
+During analysis, Claude retrieves original McKee quotations via keyword search to ensure every diagnosis is grounded in precise theory. A companion `query_mckee_kb.ps1` script provides RAG-style querying.
+
+#### 3. Two Modes: Critique Only + Co-Creation
+
 The original single workflow has been split into two independent modes:
 
-Mode	Workflow	Output
-Critique Only	Diagnose → Recommend → Report	Professional diagnostic report without rewriting
-Co-Create	Diagnose → Discuss → Iterative Rewrite → Review	Collaborative revision through iterative dialogue
+| Mode | Workflow | Output |
+|------|----------|--------|
+| **Critique Only** | Diagnose → Recommend → Report | Professional diagnostic report without rewriting |
+| **Co-Create** | Diagnose → Discuss → Iterative Rewrite → Review | Collaborative revision through iterative dialogue |
+
 Both modes are dispatched automatically via the main skill's routing system to dedicated sub-agents.
 
-Additional Improvements
-6 Deep Reference Files: 12 inciting incident variants, 3-layer gap model, 7 subtext techniques, 14 arc subtypes, 60+ value shifts, 15×5 genre matrix
-9 Classic Case Studies: 3 movies, 3 TV series, 3 novels—works McKee himself analyzed, serving as reference coordinates
-All existing reference files updated with cross-references to deep files and the knowledge base
-File Structure
+### Additional Improvements
+
+- **6 Deep Reference Files**: 12 inciting incident variants, 3-layer gap model, 7 subtext techniques, 14 arc subtypes, 60+ value shifts, 15×5 genre matrix
+- **9 Classic Case Studies**: 3 movies, 3 TV series, 3 novels—works McKee himself analyzed, serving as reference coordinates
+- **All existing reference files updated** with cross-references to deep files and the knowledge base
+
+### File Structure
+
+```
 mckee-story-analyzer/
 ├── SKILL.md                          ← Main router (tone selection + dual mode)
 ├── references/
@@ -88,6 +107,8 @@ mckee-story-analyzer/
 └── scripts/
     ├── query_mckee_kb.ps1            ← [NEW] RAG query script
     └── extract_mckee_kb.ps1          ← [NEW] EPUB extraction script
+```
+
 
 
     
@@ -134,40 +155,54 @@ mckee-story-analyzer/
 
 
 
+# McKee Story Analyzer v2 — 更新说明 / Release Notes
 
-McKee Story Analyzer v2 — 更新说明 / Release Notes
-中文
-概述
+## 中文
+
+### 概述
+
 McKee Story Analyzer v2 是一次重大升级。在保留原有五维诊断（故事结构、人物设计、对白与文本、类型与体裁、场景设计）和格式自适应系统的基础上，新版本引入了三大核心新能力。
 
-三大更新
-1. 三种分析语气
+### 三大更新
+
+#### 1. 三种分析语气
+
 用户可在分析前选择语气，系统将据此调整整个输出的措辞风格：
 
-模式	说明	适合谁
-尖刻模式 (Sharp)	直指缺陷，不绕弯子，跳过"先扬后批"	已有一-基础、想快速找到致命问题的创作者
-客观模式 (Objective)	优缺点并重，专业持平，每诊断必有理论引用	希望获得平衡专业评估的创作者 [默认]
-鼓励模式 (Encouraging)	温和建设，肯定比例 ≥ 2:1，问题包裹在正向框架中	新手作者、需要信心支持的创作阶段
+| 模式 | 说明 | 适合谁 |
+|------|------|--------|
+| **尖刻模式** (Sharp) | 直指缺陷，不绕弯子，跳过"先扬后批" | 已有一-基础、想快速找到致命问题的创作者 |
+| **客观模式** (Objective) | 优缺点并重，专业持平，每诊断必有理论引用 | 希望获得平衡专业评估的创作者 **[默认]** |
+| **鼓励模式** (Encouraging) | 温和建设，肯定比例 ≥ 2:1，问题包裹在正向框架中 | 新手作者、需要信心支持的创作阶段 |
+
 选择界面在分析开始时弹出，附各模式简介，用户一目了然。
 
-2. RAG 知识库系统
-从《故事》《对白》《人物》三部曲 EPUB 中自动提取了 1,828 条结构化理论文本，按 24 个概念维度（激励事件、鸿沟原理、人物弧光、潜文本、价值转变等）标注。分析时可通过关键词检索获取麦基原著原文引用，确保每个诊断都有精确的理论支撑。
+#### 2. RAG 知识库系统
 
-配套 query_mckee_kb.ps1 脚本提供 RAG 式查询。
+从《故事》《对白》《人物》三部曲 EPUB 中自动提取了 **1,828 条结构化理论文本**，按 **24 个概念维度**（激励事件、鸿沟原理、人物弧光、潜文本、价值转变等）标注。分析时可通过关键词检索获取麦基原著原文引用，确保每个诊断都有精确的理论支撑。
 
-3. 双模式：纯点评 + 共创修改
+配套 `query_mckee_kb.ps1` 脚本提供 RAG 式查询。
+
+#### 3. 双模式：纯点评 + 共创修改
+
 将原有的"点评+修改"拆分成了两个独立工作流：
 
-模式	工作流	产出
-纯点评 (Critique Only)	诊断 → 建议方向 → 报告	专业诊断报告，不参与改写
-共创修改 (Co-Create)	诊断 → 讨论 → 逐轮改写 → 复审	在迭代对话中完成修改
+| 模式 | 工作流 | 产出 |
+|------|--------|------|
+| **纯点评** (Critique Only) | 诊断 → 建议方向 → 报告 | 专业诊断报告，不参与改写 |
+| **共创修改** (Co-Create) | 诊断 → 讨论 → 逐轮改写 → 复审 | 在迭代对话中完成修改 |
+
 两种模式通过主 skill 的路由系统自动派发到对应的子 agent。
 
-其他改进
-6 个深度参考文件：激励事件 12 种变体、鸿沟三层递进模型、潜文本 7 种技术、弧光 14 种子类型、价值图谱 60+ 种、类型矩阵 15×5
-9 个经典案例：麦基本人重点分析过的电影×3、剧集×3、小说×3，提供"参考坐标"
-更新了所有现有参考文件，添加了与深度文件和知识库的交叉引用
-文件结构
+### 其他改进
+
+- **6 个深度参考文件**：激励事件 12 种变体、鸿沟三层递进模型、潜文本 7 种技术、弧光 14 种子类型、价值图谱 60+ 种、类型矩阵 15×5
+- **9 个经典案例**：麦基本人重点分析过的电影×3、剧集×3、小说×3，提供"参考坐标"
+- **更新了所有现有参考文件**，添加了与深度文件和知识库的交叉引用
+
+### 文件结构
+
+```
 mckee-story-analyzer/
 ├── SKILL.md                          ← 主路由（含语气选择 + 双模式）
 ├── references/
@@ -181,11 +216,6 @@ mckee-story-analyzer/
 └── scripts/
     ├── query_mckee_kb.ps1            ← [NEW] RAG 查询脚本
     └── extract_mckee_kb.ps1          ← [NEW] EPUB 提取脚本
+```
 
-你可以
-## 使用场景
-
-- 上传小说/剧本片段请求专业点评
-- 找出作品核心优缺点
-- 基于麦基理论进行修改优化
-- 讨论故事创作的结构或人物问题
+---
