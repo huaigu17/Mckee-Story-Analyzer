@@ -43,12 +43,11 @@ The format tier is determined before analysis begins. Every dimension note decla
 - Discuss structural, character, or dialogue problems
 
 
-好的，中英双语的更新文档如下，你可以直接发布在 GitHub Release / SkillHub：
 
 ---
 
 
-## English
+## V2.0 Update
 
 ### Overview
 
