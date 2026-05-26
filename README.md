@@ -109,6 +109,22 @@ mckee-story-analyzer/
 ```
 
 
+## McKee Story Analyzer v2.1 — Changelog
+
+**Core change: New three-layer work suitability classifier (Step 0)**
+
+Previous versions applied McKee analysis to all "scripts/novels" without checking whether the work was actually suitable for McKee's dramatic narrative framework. v2.1 inserts a pre-filter before routing and tone selection, with three layers:
+
+1. **Gate check** — Three questions: does it have a clear protagonist? Is the plot driven by character choices? Is there a value-turning point (positive/negative shift)? All three pass → enter McKee pipeline; two or more fail → deemed unsuitable, alternative frameworks recommended (Campbell's monomyth, kishōtenketsu, Chinese zhanghui narrative, etc.); borderline cases (two pass, one ambiguous) → allowed entry but marked "partial elements missing."
+
+2. **Plot type classification** — Distinguishes archplot/minimalism/antiplot. Archplot → full McKee standards; minimalism → entry with caveats (no requirement for complete five-part structure, active protagonist, etc.); antiplot → skip to alternatives.
+
+3. **Medium classification** — Screenplay/film → McKee's native domain, strongest applicability; novel → applicable with noted limitations (McKee's system is based on 90–120 minute films); short story → deferred to format-adaptation standards; poetry/atmospheric works → not applicable.
+
+Existing workflow steps renumbered: old Step 0 (routing + tone) → Step 1, old Step 1 (format classification) → Step 2, and so on. All internal cross-references have been updated accordingly.
+
+
+
 
     
 # McKee Story Analyzer
@@ -216,5 +232,17 @@ mckee-story-analyzer/
     ├── query_mckee_kb.ps1            ← [NEW] RAG 查询脚本
     └── extract_mckee_kb.ps1          ← [NEW] EPUB 提取脚本
 ```
+## McKee Story Analyzer v2.1 — 更新说明
 
+**核心变更：新增作品适用性三层分类器（Step 0）**
+
+之前的版本对所有"剧本/小说"类作品统一启动麦基分析，未区分作品是否真的适合用麦基的戏剧叙事理论框架。v2.1 在路由和语气选择之前插入了一层前置过滤，分三步判断：
+
+1. **门控检查** — 三个问题：有无明确主角、情节是否由角色选择驱动、有无正负价值转折点。全通过才进入麦基管道；两项不通过则判定为不适合，推荐替代框架（Campbell 神话理论、起承转合、章回体叙事等）；边界情况（两绿一黄）允许进入但标注"部分要素缺失"。
+
+2. **情节类型判断** — 区分大情节/小情节/反情节。大情节完整适用麦基标准；小情节进入但标注限制（不要求完整五部分结构、不要求主动主人公等）；反情节跳至替代方案。
+
+3. **媒介判断** — 剧本/电影为麦基原生领域最强适用；长篇小说标注局限性（麦基体系基于 90-120 分钟电影）；短篇转至格式自适应标准；诗歌/氛围型不适用。
+
+现有工作流步骤顺延：原 Step 0（路由+语气）→ Step 1，原 Step 1（格式归类）→ Step 2，以此类推。所有内部交叉引用已同步更新。
 ---
